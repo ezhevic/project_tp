@@ -4,5 +4,3 @@ class CharacterInterface:
 
     def selfprint(self):
         pass
-
-
