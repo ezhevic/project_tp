@@ -1,7 +1,7 @@
 from Cell import Cell
 import pygame
 
-textures = (pygame.image.load('floor.jpg'), pygame.image.load('wall.jpg'))
+textures = (pygame.image.load('floor.jpeg'), pygame.image.load('wall.jpeg'))
 
 
 class Field:
