@@ -1,7 +1,7 @@
 from Cell import Cell
 import pygame
 
-textures = (pygame.image.load('floor.jpeg'), pygame.image.load('wall.jpeg'))
+textures = (pygame.image.load('../floor.jpeg'), pygame.image.load('../wall.jpeg'))
 
 
 class Field:
@@ -18,7 +18,7 @@ class Field:
         texturesplit = 0
         counter = 0
         map = []
-        with open('map.txt', 'r') as f:
+        with open('../map.txt', 'r') as f:
             for line in f:
                 map.append([])
                 print('')
