@@ -22,6 +22,7 @@ class Cell:
     def move(self, x, y):
         self.rect.x += x * self.scale_factor
         self.rect.y += y * self.scale_factor
+
         for i in self.containment:
             i.Move(x, y)
 

@@ -10,6 +10,9 @@ fieldposition = [startx, starty] = [200, 30]
 horizontalcellcount = 15
 verticalcellcount = 15
 scale_factor = 3
+clock = pygame.time.Clock()
+FPS = 15
+isDead = False
 
 
 class Game:
@@ -17,12 +20,10 @@ class Game:
         gameover = False
         field = Field(horizontalcellcount, verticalcellcount, fieldposition, scale_factor)
         field.selfgeneration()
-        field.selfprint()
         mainhero = Hero(1, [11, 10], scale_factor, field)
 
         while not gameover:
             screen.fill((220, 200, 240))
-
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     gameover = True
@@ -38,12 +39,14 @@ class Game:
                         direction = [1, 0]
                     mainhero.bufferredirect(direction)
 
-            field.selfprint()
-            mainhero.update()
+            if not isDead:
+                field.selfprint()
+                mainhero.update()
+            if isDead:
+                gameover = True
 
             pygame.display.flip()
-            pygame.time.wait(200)
+            pygame.time.wait(20)
         sys.exit()
-
 
     play()

@@ -15,17 +15,17 @@ class Field:
 
     def selfgeneration(self):
         tempy = self.y
-        texturesplit = 0
+        field_scale = 30
         counter = 0
         map = []
         with open('../map.txt', 'r') as f:
             for line in f:
                 map.append([])
-                print('')
                 for letter in line:
                     if letter != '\n':
                         map[counter].append(int(letter))
                 counter += 1
+
         for i in range(0, self.verticalcellcount):
             self.cells.append([])
             tempx = self.x
@@ -34,8 +34,8 @@ class Field:
                 if map[i][j] == 1:
                     temp_cell = Cell(textures[1], tempx, tempy, self.scale_factor, 1)
                 self.cells[i].append(temp_cell)
-                tempx = tempx + 10 * self.scale_factor + texturesplit
-            tempy = tempy + 10 * self.scale_factor + texturesplit
+                tempx = tempx + field_scale
+            tempy = tempy + field_scale
 
     def selfprint(self):
         for x in range(0, len(self.cells)):
