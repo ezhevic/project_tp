@@ -1,7 +1,9 @@
 from Cell import Cell
 import pygame
 
-textures = (pygame.image.load('../floor.jpeg'), pygame.image.load('../wall.jpeg'))
+textures = [pygame.image.load('../animation/floor.jpeg'), pygame.image.load('../animation/wall.jpeg'), pygame.image.load(
+    '../animation/wall3.png'), pygame.image.load('../animation/floor.jpeg')]
+Dot_Texture = pygame.image.load('../animation/coin.png')
 
 
 class Field:
@@ -30,9 +32,13 @@ class Field:
             self.cells.append([])
             tempx = self.x
             for j in range(0, self.horizontalcellcount):
-                temp_cell = Cell(textures[0], tempx, tempy, self.scale_factor, 0)
+                temp_cell = Cell(textures[0], tempx, tempy, self.scale_factor, 0, Dot_Texture)
                 if map[i][j] == 1:
-                    temp_cell = Cell(textures[1], tempx, tempy, self.scale_factor, 1)
+                    temp_cell = Cell(textures[1], tempx, tempy, self.scale_factor, 1, Dot_Texture)
+                if map[i][j] == 2:
+                    temp_cell = Cell(textures[2], tempx, tempy, self.scale_factor, 2, Dot_Texture)
+                if map[i][j] == 3:
+                    temp_cell = Cell(textures[3], tempx, tempy, self.scale_factor, 3, Dot_Texture)
                 self.cells[i].append(temp_cell)
                 tempx = tempx + field_scale
             tempy = tempy + field_scale
