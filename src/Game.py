@@ -12,12 +12,10 @@ horizontalcellcount = 15
 verticalcellcount = 15
 scale_factor = 3
 clock = pygame.time.Clock()
-FPS = 15
+FPS = 30
 isDead = False
 ghost_texture = pygame.image.load('../animation/Red_Ghost.png')
-pacman_r = (pygame.image.load('../animation/RightMoveAnimation0.png'), pygame.image.load('../animation/RightMoveAnimation1.png'), pygame.image.load('../animation/RightMoveAnimation2.png'))
-pacman_l = (pygame.image.load('../animation/LeftMoveAnimation0.png'), pygame.image.load('../animation/LeftMoveAnimation1.png'), pygame.image.load('../animation/LeftMoveAnimation2.png'))
-animation_list = (pacman_r, pacman_l)
+
 
 class Game:
     def play():
@@ -26,7 +24,7 @@ class Game:
         gameover = False
         field = Field(horizontalcellcount, verticalcellcount, fieldposition, scale_factor)
         field.selfgeneration()
-        mainhero = Hero([9, 10], field, animation_list)
+        mainhero = Hero([9, 10], field)
         ghost = (Ghost(ghost_texture, field), Ghost(ghost_texture, field))
 
         while not gameover:

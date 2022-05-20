@@ -23,8 +23,6 @@ class Ghost(CharacterInterface):
         self.x = self.current_cell.rect.x
         self.y = self.current_cell.rect.y
 
-    #        self.drop()
-
     def logic(self):
         direction = random.randint(0, 1)
         if direction == 0:
@@ -37,12 +35,12 @@ class Ghost(CharacterInterface):
         delay = 1
         if self.moving_counter == delay:
             direction = self.logic()
-            if self.field.cells[self.current_cell_adr[0] + direction[0]][
-                self.current_cell_adr[1] + direction[1]].id != 1:
+            if self.field.cells[(self.current_cell_adr[0] + direction[0]) % 15][
+                (self.current_cell_adr[1] + direction[1]) % 15].id != 1:
                 self.current_cell_adr = (
                     self.current_cell_adr[0] + direction[0], self.current_cell_adr[1] + direction[1])
                 self.current_cell.withGhost = False
-                self.current_cell = self.field.cells[self.current_cell_adr[0]][self.current_cell_adr[1]]
+                self.current_cell = self.field.cells[(self.current_cell_adr[0]) % 15][(self.current_cell_adr[1]) % 15]
                 self.current_cell.withGhost = True
                 self.x = self.current_cell.rect.x
                 self.y = self.current_cell.rect.y
