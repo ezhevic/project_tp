@@ -23,8 +23,6 @@ class Ghost(CharacterInterface):
         self.x = self.current_cell.rect.x
         self.y = self.current_cell.rect.y
 
-    #        self.drop()
-
     def logic(self):
         direction = random.randint(0, 1)
         if direction == 0:
