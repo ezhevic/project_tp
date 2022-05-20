@@ -6,14 +6,6 @@ import pygame
 
 size = width, height = 900, 500
 screen = pygame.display.set_mode(size)
-pacman_r = (
-    pygame.image.load('../animation/RightMoveAnimation0.png'),
-    pygame.image.load('../animation/RightMoveAnimation1.png'),
-    pygame.image.load('../animation/RightMoveAnimation2.png'))
-pacman_l = (
-    pygame.image.load('../animation/LeftMoveAnimation0.png'), pygame.image.load('../animation/LeftMoveAnimation1.png'),
-    pygame.image.load('../animation/LeftMoveAnimation2.png'))
-pacman = (pacman_r, pacman_l)
 delay = 15
 hor_location = 8
 vert_location = 5
@@ -21,10 +13,9 @@ loc_in_cell = 5
 
 
 class Hero(CharacterInterface):
-    def __init__(self, start_cell_address, field, pacman):
+    def __init__(self, start_cell_address, field):
         self.health = 3
         self.field = field
-        self.pacman = pacman
         self.current_cell_adr = start_cell_address
         self.current_cell = field.cells[start_cell_address[0] % 15][start_cell_address[1] % 15]
         self.x = self.current_cell.rect.x % 15
@@ -38,9 +29,7 @@ class Hero(CharacterInterface):
         self.animation_id = 0
         self.isstart = True
         self.score = 0
-        self.animation = pygame.transform.scale(self.pacman[0][self.animation_id], (
-            self.pacman[0][self.animation_id].get_rect().width,
-            self.pacman[0][self.animation_id].get_rect().height))
+
 
     def move(self):
         if self.field.cells[(self.current_cell_adr[0] + self.current_direction[1]) % 15][
